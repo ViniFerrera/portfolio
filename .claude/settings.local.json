@@ -10,7 +10,10 @@
       "Bash(node -e \"const l = require\\(''lucide-react''\\); console.log\\(Object.keys\\(l\\).filter\\(k => k.toLowerCase\\(\\).includes\\(''github''\\)\\).join\\('', ''\\)\\)\")",
       "Bash(node -e \"import\\(''lucide-react''\\).then\\(m => console.log\\(Object.keys\\(m\\).filter\\(k => k.toLowerCase\\(\\).includes\\(''github''\\) || k.toLowerCase\\(\\).includes\\(''linkedin''\\)\\).join\\('', ''\\)\\)\\)\")",
       "WebFetch(domain:docs.odds-api.io)",
-      "WebFetch(domain:api.odds-api.io)"
+      "WebFetch(domain:api.odds-api.io)",
+      "WebFetch(domain:dunks1980.com)",
+      "WebSearch",
+      "Bash(git add:*)"
     ]
   }
 }

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#08080f"/>
+      <stop offset="100%" style="stop-color:#13112a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <!-- Flow diagram nodes -->
+  <!-- Trigger -->
+  <rect x="60" y="180" width="120" height="50" rx="25" fill="rgba(201,255,0,0.08)" stroke="rgba(201,255,0,0.5)" stroke-width="1.5"/>
+  <text x="120" y="200" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(201,255,0,0.7)" font-weight="bold">TRIGGER</text>
+  <text x="120" y="218" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.4)">Novo formulário</text>
+  <!-- Arrow 1 -->
+  <line x1="180" y1="205" x2="230" y2="205" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+  <polygon points="230,199 242,205 230,211" fill="rgba(255,255,255,0.2)"/>
+  <!-- Condition -->
+  <polygon points="322,170 380,205 322,240 264,205" fill="rgba(201,255,0,0.06)" stroke="rgba(201,255,0,0.3)" stroke-width="1.5"/>
+  <text x="322" y="201" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.5)">Aprovação</text>
+  <text x="322" y="214" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.5)">necessária?</text>
+  <!-- Arrow yes (down) -->
+  <line x1="322" y1="240" x2="322" y2="290" stroke="rgba(201,255,0,0.4)" stroke-width="1.5"/>
+  <polygon points="316,290 322,302 328,290" fill="rgba(201,255,0,0.4)"/>
+  <text x="330" y="272" font-family="Arial" font-size="9" fill="rgba(201,255,0,0.5)">Sim</text>
+  <!-- Approve action -->
+  <rect x="252" y="302" width="140" height="44" rx="6" fill="rgba(201,255,0,0.08)" stroke="rgba(201,255,0,0.3)" stroke-width="1"/>
+  <text x="322" y="322" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(201,255,0,0.7)">Notificar</text>
+  <text x="322" y="336" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.3)">Power Automate</text>
+  <!-- Arrow no (right) -->
+  <line x1="380" y1="205" x2="430" y2="205" stroke="rgba(255,100,100,0.4)" stroke-width="1.5"/>
+  <polygon points="430,199 442,205 430,211" fill="rgba(255,100,100,0.4)"/>
+  <text x="404" y="196" font-family="Arial" font-size="9" fill="rgba(255,100,100,0.5)">Não</text>
+  <!-- Auto action -->
+  <rect x="442" y="180" width="130" height="50" rx="6" fill="rgba(255,100,100,0.05)" stroke="rgba(255,100,100,0.25)" stroke-width="1"/>
+  <text x="507" y="202" text-anchor="middle" font-family="Arial" font-size="10" fill="rgba(255,150,150,0.7)">Auto-aprovado</text>
+  <text x="507" y="216" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,255,255,0.3)">SharePoint</text>
+  <!-- Label -->
+  <text x="40" y="55" font-family="'JetBrains Mono', monospace" font-size="13" fill="rgba(201,255,0,0.5)" letter-spacing="3">POWER PLATFORM</text>
+  <text x="40" y="78" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="rgba(255,255,255,0.9)">App de Aprovações</text>
+</svg>

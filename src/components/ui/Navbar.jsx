@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
-import ThemeToggle from './ThemeToggle'
+import { Menu, X, Sun, Moon } from 'lucide-react'
+import { useTheme } from '../../contexts/ThemeContext'
 
 const links = [
   { href: '#sobre', label: 'Sobre' },
@@ -12,81 +12,131 @@ const links = [
 ]
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { theme, toggle } = useTheme()
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between
-        h-16 px-5 md:px-8
-        bg-base-900/80 backdrop-blur-xl border-b border-base-600/50
-        light:bg-light-900/80 light:border-light-700/50"
-      role="navigation"
-      aria-label="Navegação principal"
+    <header
+      className={`nav-wrap fixed top-0 inset-x-0 z-50 transition-all duration-300
+        ${scrolled
+          ? 'bg-[#07080f]/90 backdrop-blur-xl border-b border-[rgba(237,238,244,0.07)]'
+          : 'bg-transparent border-b border-transparent'
+        }`}
     >
-      <a
-        href="#hero"
-        className="text-lg font-bold tracking-tight text-base-50 light:text-light-50 no-underline hover:text-base-50 light:hover:text-light-50"
-      >
-        dev<span className="text-accent">.</span>portfolio
-      </a>
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
 
-      {/* Desktop links */}
-      <div className="hidden md:flex items-center gap-6">
-        {links.map(l => (
-          <a
-            key={l.href}
-            href={l.href}
-            className="text-sm font-medium text-base-200 hover:text-base-50
-              light:text-light-400 light:hover:text-light-50
-              transition-colors duration-150 no-underline"
-          >
-            {l.label}
-          </a>
-        ))}
-        <ThemeToggle />
-      </div>
-
-      {/* Mobile toggle */}
-      <div className="flex md:hidden items-center gap-2">
-        <ThemeToggle />
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
-          className="w-10 h-10 flex items-center justify-center text-base-200 light:text-light-300"
+        {/* Brand */}
+        <a
+          href="#hero"
+          className="nav-logo font-['Montserrat',sans-serif] font-black text-[17px] tracking-[-0.5px]
+            text-d-text no-underline hover:text-d-text group"
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+          <span className="text-lime">_</span>seusite
+          <span className="text-d-muted text-[13px] font-normal">.dev</span>
+        </a>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-7" aria-label="Navegação principal">
+          {links.map(l => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="nav-link text-[13px] font-medium text-d-muted hover:text-d-text
+                transition-colors duration-150 no-underline tracking-wide"
+            >
+              {l.label}
+            </a>
+          ))}
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggle}
+            aria-label={theme === 'dark' ? 'Modo claro' : 'Modo escuro'}
+            className="w-8 h-8 flex items-center justify-center rounded-md
+              text-d-muted hover:text-lime border border-[rgba(237,238,244,0.1)]
+              hover:border-lime/30 transition-all duration-150"
+          >
+            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+
+          {/* CTA */}
+          <a
+            href="#contato"
+            className="inline-flex items-center h-8 px-4 rounded-md text-[12px] font-bold
+              bg-lime text-[#07080f] hover:bg-[#dffe3a]
+              transition-colors duration-150 tracking-wide no-underline"
+          >
+            Contratar
+          </a>
+        </nav>
+
+        {/* Mobile: theme + burger */}
+        <div className="flex md:hidden items-center gap-2">
+          <button
+            onClick={toggle}
+            aria-label="Alternar tema"
+            className="w-8 h-8 flex items-center justify-center rounded-md
+              text-d-muted hover:text-lime border border-[rgba(237,238,244,0.1)]"
+          >
+            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            className="w-8 h-8 flex items-center justify-center rounded-md
+              text-d-muted hover:text-d-text border border-[rgba(237,238,244,0.1)]"
+          >
+            {open ? <X size={16} /> : <Menu size={16} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       <AnimatePresence>
-        {mobileOpen && (
+        {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-16 left-0 right-0 z-50
-              bg-base-800 border-b border-base-600
-              light:bg-light-800 light:border-light-700
-              flex flex-col py-4 px-5 gap-1 md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="md:hidden overflow-hidden border-t border-[rgba(237,238,244,0.07)]
+              bg-[#0c0d16]"
           >
-            {links.map(l => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-medium py-3 px-3 rounded-lg
-                  text-base-200 hover:text-base-50 hover:bg-base-700
-                  light:text-light-400 light:hover:text-light-50 light:hover:bg-light-700
-                  transition-colors duration-150 no-underline"
-              >
-                {l.label}
-              </a>
-            ))}
+            <nav className="px-6 py-4 flex flex-col gap-1">
+              {links.map(l => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-medium py-3 px-3 rounded-lg
+                    text-d-muted hover:text-d-text hover:bg-[rgba(237,238,244,0.04)]
+                    no-underline transition-colors duration-150"
+                >
+                  {l.label}
+                </a>
+              ))}
+              <div className="pt-2 border-t border-[rgba(237,238,244,0.07)] mt-2">
+                <a
+                  href="#contato"
+                  onClick={() => setOpen(false)}
+                  className="block text-center py-2.5 px-4 rounded-md text-sm font-bold
+                    bg-lime text-[#07080f] hover:bg-[#dffe3a]
+                    no-underline transition-colors duration-150"
+                >
+                  Contratar
+                </a>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   )
 }

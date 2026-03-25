@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#060a18"/>
+      <stop offset="100%" style="stop-color:#0e1a35"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <!-- Grid lines -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="160" y1="0" x2="160" y2="500"/>
+    <line x1="320" y1="0" x2="320" y2="500"/>
+    <line x1="480" y1="0" x2="480" y2="500"/>
+    <line x1="640" y1="0" x2="640" y2="500"/>
+  </g>
+  <!-- Bar chart bars -->
+  <rect x="80" y="320" width="60" height="130" rx="4" fill="rgba(201,255,0,0.15)" stroke="#c9ff00" stroke-width="1"/>
+  <rect x="180" y="240" width="60" height="210" rx="4" fill="rgba(201,255,0,0.25)" stroke="#c9ff00" stroke-width="1"/>
+  <rect x="280" y="180" width="60" height="270" rx="4" fill="rgba(201,255,0,0.35)" stroke="#c9ff00" stroke-width="1"/>
+  <rect x="380" y="120" width="60" height="330" rx="4" fill="rgba(201,255,0,0.55)" stroke="#c9ff00" stroke-width="1"/>
+  <rect x="480" y="200" width="60" height="250" rx="4" fill="rgba(201,255,0,0.30)" stroke="#c9ff00" stroke-width="1"/>
+  <rect x="580" y="260" width="60" height="190" rx="4" fill="rgba(201,255,0,0.20)" stroke="#c9ff00" stroke-width="1"/>
+  <!-- Line overlay -->
+  <polyline points="110,310 210,230 310,170 410,110 510,190 610,250" fill="none" stroke="#c9ff00" stroke-width="2" stroke-dasharray="5,3" opacity="0.7"/>
+  <!-- Dots on line -->
+  <circle cx="110" cy="310" r="5" fill="#c9ff00"/>
+  <circle cx="210" cy="230" r="5" fill="#c9ff00"/>
+  <circle cx="310" cy="170" r="5" fill="#c9ff00"/>
+  <circle cx="410" cy="110" r="5" fill="#c9ff00"/>
+  <circle cx="510" cy="190" r="5" fill="#c9ff00"/>
+  <circle cx="610" cy="250" r="5" fill="#c9ff00"/>
+  <!-- Label -->
+  <text x="40" y="50" font-family="'JetBrains Mono', monospace" font-size="13" fill="rgba(201,255,0,0.5)" letter-spacing="3">DATA & ANALYTICS</text>
+  <text x="40" y="75" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="rgba(255,255,255,0.9)">Dashboard Analytics</text>
+</svg>

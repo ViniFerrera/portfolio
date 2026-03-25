@@ -16,6 +16,8 @@ export default function PortfolioPage() {
       <Navbar />
       <main id="main-content">
         <Hero />
+        {/* Full-width divider */}
+        <div className="border-t border-[rgba(237,238,244,0.07)]" />
         <About />
         <Expertise />
         <TechStack />

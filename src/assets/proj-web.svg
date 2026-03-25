@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#07060f"/>
+      <stop offset="100%" style="stop-color:#120e24"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9ff00;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#c9ff00;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <!-- Browser frame -->
+  <rect x="60" y="80" width="680" height="380" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <!-- Browser bar -->
+  <rect x="60" y="80" width="680" height="36" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <circle cx="88" cy="98" r="5" fill="rgba(255,100,100,0.5)"/>
+  <circle cx="106" cy="98" r="5" fill="rgba(255,200,60,0.5)"/>
+  <circle cx="124" cy="98" r="5" fill="rgba(201,255,0,0.5)"/>
+  <!-- URL bar -->
+  <rect x="160" y="88" width="380" height="20" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="170" y="102" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.3)">https://portfolio.vercel.app</text>
+  <!-- Website content mockup -->
+  <rect x="80" y="128" width="200" height="16" rx="3" fill="rgba(201,255,0,0.3)"/>
+  <rect x="80" y="154" width="320" height="10" rx="3" fill="rgba(255,255,255,0.12)"/>
+  <rect x="80" y="170" width="280" height="10" rx="3" fill="rgba(255,255,255,0.08)"/>
+  <rect x="80" y="186" width="300" height="10" rx="3" fill="rgba(255,255,255,0.06)"/>
+  <!-- Cards -->
+  <rect x="80" y="220" width="190" height="120" rx="6" fill="rgba(201,255,0,0.04)" stroke="rgba(201,255,0,0.2)" stroke-width="1"/>
+  <rect x="285" y="220" width="190" height="120" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <rect x="490" y="220" width="190" height="120" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <rect x="95" y="235" width="80" height="8" rx="2" fill="rgba(201,255,0,0.5)"/>
+  <rect x="300" y="235" width="80" height="8" rx="2" fill="rgba(255,255,255,0.2)"/>
+  <rect x="505" y="235" width="80" height="8" rx="2" fill="rgba(255,255,255,0.2)"/>
+  <rect x="95" y="253" width="160" height="6" rx="2" fill="rgba(255,255,255,0.1)"/>
+  <rect x="300" y="253" width="160" height="6" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <rect x="505" y="253" width="160" height="6" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <!-- Label -->
+  <text x="40" y="50" font-family="'JetBrains Mono', monospace" font-size="13" fill="rgba(201,255,0,0.5)" letter-spacing="3">WEB DEVELOPMENT</text>
+  <text x="40" y="73" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="rgba(255,255,255,0.9)">Portfólio Dinâmico</text>
+</svg>

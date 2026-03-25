@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1521"/>
+      <stop offset="100%" style="stop-color:#1a2540"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8b89a"/>
+      <stop offset="100%" style="stop-color:#c9956a"/>
+    </linearGradient>
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9ff00"/>
+      <stop offset="100%" style="stop-color:#9acc00"/>
+    </linearGradient>
+    <clipPath id="circle">
+      <circle cx="200" cy="200" r="200"/>
+    </clipPath>
+  </defs>
+  <!-- Background -->
+  <circle cx="200" cy="200" r="200" fill="url(#bgGrad)"/>
+  <!-- Subtle grid -->
+  <g stroke="rgba(201,255,0,0.04)" stroke-width="1" clip-path="url(#circle)">
+    <line x1="0" y1="50" x2="400" y2="50"/>
+    <line x1="0" y1="100" x2="400" y2="100"/>
+    <line x1="0" y1="150" x2="400" y2="150"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="0" y1="250" x2="400" y2="250"/>
+    <line x1="0" y1="300" x2="400" y2="300"/>
+    <line x1="0" y1="350" x2="400" y2="350"/>
+    <line x1="50" y1="0" x2="50" y2="400"/>
+    <line x1="100" y1="0" x2="100" y2="400"/>
+    <line x1="150" y1="0" x2="150" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="250" y1="0" x2="250" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/>
+    <line x1="350" y1="0" x2="350" y2="400"/>
+  </g>
+  <!-- Shirt / body -->
+  <ellipse cx="200" cy="420" rx="130" ry="100" fill="url(#shirtGrad)" clip-path="url(#circle)"/>
+  <!-- Neck -->
+  <rect x="178" y="295" width="44" height="50" rx="8" fill="url(#skinGrad)"/>
+  <!-- Head -->
+  <ellipse cx="200" cy="245" rx="78" ry="88" fill="url(#skinGrad)"/>
+  <!-- Hair -->
+  <ellipse cx="200" cy="175" rx="78" ry="48" fill="#1a0a00"/>
+  <ellipse cx="200" cy="162" rx="70" ry="38" fill="#2d1500"/>
+  <ellipse cx="140" cy="210" rx="22" ry="35" fill="#1a0a00"/>
+  <ellipse cx="260" cy="210" rx="22" ry="35" fill="#1a0a00"/>
+  <!-- Eyes -->
+  <ellipse cx="175" cy="248" rx="12" ry="10" fill="#fff"/>
+  <ellipse cx="225" cy="248" rx="12" ry="10" fill="#fff"/>
+  <circle cx="177" cy="249" r="7" fill="#3d2b1a"/>
+  <circle cx="227" cy="249" r="7" fill="#3d2b1a"/>
+  <circle cx="179" cy="247" r="3" fill="#000"/>
+  <circle cx="229" cy="247" r="3" fill="#000"/>
+  <circle cx="181" cy="245" r="1.5" fill="#fff"/>
+  <circle cx="231" cy="245" r="1.5" fill="#fff"/>
+  <!-- Eyebrows -->
+  <path d="M162 234 Q175 228 188 232" stroke="#2d1500" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M212 232 Q225 228 238 234" stroke="#2d1500" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Nose -->
+  <path d="M198 258 Q194 272 197 278 Q200 280 203 278 Q206 272 202 258" fill="rgba(0,0,0,0.1)"/>
+  <!-- Smile -->
+  <path d="M183 288 Q200 300 217 288" stroke="#b07050" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Accent dot -->
+  <circle cx="340" cy="60" r="8" fill="#c9ff00"/>
+  <circle cx="60" cy="340" r="5" fill="#c9ff00" opacity="0.5"/>
+</svg>

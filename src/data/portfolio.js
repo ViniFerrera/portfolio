@@ -1,8 +1,16 @@
+import projBi from '../assets/proj-bi.svg'
+import projEtl from '../assets/proj-etl.svg'
+import projWeb from '../assets/proj-web.svg'
+import projApi from '../assets/proj-api.svg'
+import projPower from '../assets/proj-power.svg'
+import projAutomate from '../assets/proj-automate.svg'
+import profileImg from '../assets/profile.svg'
+
 export const profile = {
   name: 'Seu Nome',
-  role: 'Full Stack Developer',
-  heroImageUrl: null,
-  bio: 'Sou um desenvolvedor Full Stack com paixão por criar soluções digitais que fazem a diferença. Tenho experiência construindo desde pequenas landing pages até sistemas complexos em produção. Trabalho principalmente com React, Node.js e bancos de dados relacionais e NoSQL.',
+  role: 'Full Stack Developer & Data Engineer',
+  heroImageUrl: profileImg,
+  bio: 'Desenvolvedor Full Stack e Engenheiro de Dados com foco em soluções corporativas robustas. Especialista em transformar dados brutos em insights estratégicos e ideias em produtos digitais escaláveis.',
   email: 'seuemail@email.com',
   linkedin: 'linkedin.com/in/seuperfil',
   github: 'github.com/seuusuario',
@@ -11,48 +19,57 @@ export const profile = {
 export const expertises = [
   {
     id: '1',
-    title: 'Business Intelligence & Análise de Dados',
-    description: 'Criação de dashboards interativos e relatórios estratégicos.',
+    title: 'Business Intelligence & Dados',
+    description: 'Criação de dashboards interativos e relatórios estratégicos que transformam dados em decisões.',
     icon: 'BarChart3',
+    num: '01',
   },
   {
     id: '2',
-    title: 'Soluções Corporativas (Power Platform)',
-    description: 'Apps sob medida utilizando Power Apps e automações com Power Automate.',
+    title: 'Power Platform',
+    description: 'Apps sob medida utilizando Power Apps e automações complexas com Power Automate.',
     icon: 'Blocks',
+    num: '02',
   },
   {
     id: '3',
     title: 'Desenvolvimento Full Stack',
-    description: 'Sistemas web e APIs REST robustas utilizando React, Node.js e TypeScript.',
+    description: 'Sistemas web completos e APIs REST robustas com React, Node.js e TypeScript.',
     icon: 'Code2',
+    num: '03',
   },
   {
     id: '4',
     title: 'Engenharia de Dados (ETL)',
-    description: 'Estruturação em bancos relacionais. ETL com Python e Linguagem M.',
+    description: 'Pipelines de extração, transformação e carga com Python, SQL e Linguagem M.',
     icon: 'Database',
+    num: '04',
   },
   {
     id: '5',
-    title: 'Prototipagem e UI/UX',
-    description: 'Interfaces atraentes focadas na experiência do usuário (Figma).',
+    title: 'UI/UX & Prototipagem',
+    description: 'Interfaces focadas em experiência do usuário, do wireframe ao código final.',
     icon: 'Palette',
+    num: '05',
   },
 ]
 
 export const techStack = [
   {
     category: 'Linguagens & Frameworks',
-    items: ['Python', 'React', 'Node.js', 'TypeScript'],
+    items: ['Python', 'TypeScript', 'React', 'Node.js', 'SQL'],
   },
   {
     category: 'Dados & BI',
-    items: ['Power BI', 'Looker Studio', 'Oracle', 'PostgreSQL', 'SQL Server'],
+    items: ['Power BI', 'Looker Studio', 'PostgreSQL', 'SQL Server', 'Oracle', 'Linguagem M'],
   },
   {
     category: 'Ecossistema Microsoft',
-    items: ['Power Apps', 'Power Automate'],
+    items: ['Power Apps', 'Power Automate', 'SharePoint', 'Azure AD'],
+  },
+  {
+    category: 'Infra & DevOps',
+    items: ['Docker', 'Git', 'Vercel', 'Prisma ORM', 'REST APIs'],
   },
 ]
 
@@ -67,52 +84,52 @@ export const projects = [
   {
     id: '1',
     title: 'Dashboard de Vendas',
-    description: 'Dashboard interativo de análise de vendas com filtros dinâmicos, KPIs em tempo real e drill-down por região.',
-    imageUrl: null,
+    description: 'Dashboard interativo com filtros dinâmicos, KPIs em tempo real e drill-down por região. Integra dados de múltiplas fontes via ETL automatizado.',
+    imageUrl: projBi,
     githubUrl: '#',
     demoUrl: '#',
-    tech: ['Power BI', 'DAX', 'SQL Server'],
+    tech: ['Power BI', 'DAX', 'SQL Server', 'Python'],
     categoryId: 'data',
     featured: true,
   },
   {
     id: '2',
     title: 'Pipeline ETL Automatizado',
-    description: 'Pipeline de extração, transformação e carga de dados de múltiplas fontes para data warehouse centralizado.',
-    imageUrl: null,
+    description: 'Pipeline de extração, transformação e carga de dados de múltiplas fontes para data warehouse centralizado com agendamento e monitoramento.',
+    imageUrl: projEtl,
     githubUrl: '#',
     demoUrl: null,
-    tech: ['Python', 'PostgreSQL', 'Linguagem M'],
+    tech: ['Python', 'PostgreSQL', 'Linguagem M', 'Airflow'],
     categoryId: 'data',
     featured: true,
   },
   {
     id: '3',
-    title: 'Portfolio Dinâmico',
-    description: 'Portfólio pessoal com CMS próprio, painel admin, animações Framer Motion e design brutalista limpo.',
-    imageUrl: null,
+    title: 'Portfólio Dinâmico',
+    description: 'Portfólio pessoal com CMS próprio, painel admin completo, animações Framer Motion e design brutalista com dark/light mode.',
+    imageUrl: projWeb,
     githubUrl: '#',
     demoUrl: '#',
-    tech: ['React', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+    tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Prisma'],
     categoryId: 'web',
     featured: true,
   },
   {
     id: '4',
     title: 'API REST Completa',
-    description: 'API RESTful com autenticação JWT, rate limiting, documentação Swagger e testes automatizados.',
-    imageUrl: null,
+    description: 'API RESTful com autenticação JWT, rate limiting, documentação Swagger, testes automatizados e deploy contínuo com Docker.',
+    imageUrl: projApi,
     githubUrl: '#',
     demoUrl: null,
-    tech: ['Node.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
+    tech: ['Node.js', 'TypeScript', 'PostgreSQL', 'Docker'],
     categoryId: 'web',
-    featured: false,
+    featured: true,
   },
   {
     id: '5',
     title: 'App de Aprovações',
-    description: 'Aplicativo de aprovações multi-nível com notificações push e integração com SharePoint.',
-    imageUrl: null,
+    description: 'Aplicativo corporativo de aprovações multi-nível com notificações push, fluxo condicional e integração com SharePoint.',
+    imageUrl: projPower,
     githubUrl: null,
     demoUrl: '#',
     tech: ['Power Apps', 'Power Automate', 'SharePoint'],
@@ -122,11 +139,11 @@ export const projects = [
   {
     id: '6',
     title: 'Automação de Onboarding',
-    description: 'Fluxo automatizado de onboarding de colaboradores com criação de contas e envio de documentos.',
-    imageUrl: null,
+    description: 'Fluxo automatizado de onboarding que cria contas no Azure AD, envia documentos via SharePoint e convida para o Teams automaticamente.',
+    imageUrl: projAutomate,
     githubUrl: null,
     demoUrl: '#',
-    tech: ['Power Automate', 'Power Apps', 'Outlook'],
+    tech: ['Power Automate', 'Azure AD', 'Teams', 'Outlook'],
     categoryId: 'power',
     featured: false,
   },

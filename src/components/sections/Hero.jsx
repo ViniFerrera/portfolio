@@ -1,132 +1,166 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Send } from 'lucide-react'
+import { ArrowRight, ArrowDownRight } from 'lucide-react'
 import { profile } from '../../data/portfolio'
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
-}
+const CHAR_DELAY = 0.03
 
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+function AnimatedWord({ word, startDelay = 0 }) {
+  return (
+    <>
+      {word.split('').map((ch, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: startDelay + i * CHAR_DELAY,
+            duration: 0.5,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          style={{ display: 'inline-block' }}
+        >
+          {ch === ' ' ? '\u00A0' : ch}
+        </motion.span>
+      ))}
+    </>
+  )
 }
 
 export default function Hero() {
+  const [first, ...rest] = profile.name.split(' ')
+  const lastName = rest.join(' ')
+
   return (
-    <section id="hero" className="relative min-h-dvh flex items-center justify-center text-center px-5 pt-20 pb-12 overflow-hidden">
-      {/* Grid bg */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.06]
-          light:opacity-[0.04]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(96,165,250,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(96,165,250,0.3) 1px, transparent 1px)',
-          backgroundSize: '72px 72px',
-          maskImage: 'radial-gradient(ellipse 70% 50% at 50% 0%, black, transparent)',
-        }}
-      />
+    <section
+      id="hero"
+      className="relative min-h-dvh flex flex-col justify-between
+        px-6 md:px-10 pt-32 pb-12 overflow-hidden max-w-[1200px] mx-auto"
+    >
+      {/* ── Top row ── */}
+      <div className="flex items-start justify-between gap-8">
+        {/* Name block */}
+        <div className="flex-1">
+          {/* Section tag */}
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="inline-flex items-center gap-2 mb-8"
+          >
+            <span className="text-lime font-mono text-[11px] tracking-[3px] uppercase">00/</span>
+            <span className="text-d-muted text-[11px] tracking-[2px] uppercase">Intro</span>
+          </motion.div>
 
-      {/* Glow */}
-      <div
-        aria-hidden="true"
-        className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%)',
-        }}
-      />
+          {/* Big name */}
+          <h1
+            className="font-['Montserrat',sans-serif] font-black
+              text-[clamp(3rem,8.5vw,7.5rem)]
+              leading-[0.95] tracking-[-3px] md:tracking-[-5px]
+              text-d-text overflow-hidden"
+            aria-label={profile.name}
+          >
+            <span className="block overflow-hidden">
+              <AnimatedWord word={first} startDelay={0.2} />
+            </span>
+            {lastName && (
+              <span className="block overflow-hidden text-lime">
+                <AnimatedWord word={lastName} startDelay={0.35} />
+              </span>
+            )}
+          </h1>
+        </div>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="relative z-10 max-w-[640px]"
-      >
-        {/* Avatar */}
-        <motion.div variants={item} className="mb-6">
-          {profile.heroImageUrl ? (
+        {/* Profile image — top-right */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden md:block shrink-0 w-[180px] h-[180px] lg:w-[220px] lg:h-[220px] mt-14"
+        >
+          <div className="relative w-full h-full">
+            {/* Accent frame */}
+            <div className="absolute inset-0 rounded-2xl border border-lime/20 translate-x-2 translate-y-2" />
             <img
               src={profile.heroImageUrl}
               alt={`Foto de ${profile.name}`}
-              width={140}
-              height={140}
-              className="w-[140px] h-[140px] rounded-full object-cover mx-auto
-                border-2 border-accent/40 shadow-[0_0_40px_rgba(96,165,250,0.25)]
-                hover:scale-105 transition-transform duration-300"
+              className="relative z-10 w-full h-full object-cover rounded-2xl
+                border border-[rgba(237,238,244,0.1)]
+                grayscale hover:grayscale-0 transition-all duration-700"
             />
-          ) : (
-            <div
-              className="w-[140px] h-[140px] rounded-full mx-auto flex items-center justify-center
-                border-2 border-accent/40 shadow-[0_0_40px_rgba(96,165,250,0.25)]
-                bg-base-700 light:bg-light-700
-                text-4xl font-bold text-accent"
-            >
-              {profile.name.charAt(0)}
-            </div>
-          )}
+          </div>
         </motion.div>
+      </div>
 
-        {/* Badge */}
-        <motion.div variants={item} className="mb-5">
-          <span
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium
-              bg-base-700/60 border border-base-500/50 text-base-200
-              light:bg-light-700/60 light:border-light-600/50 light:text-light-300"
-          >
-            <span className="w-2 h-2 rounded-full bg-success animate-pulse" aria-hidden="true" />
+      {/* ── Bottom block ── */}
+      <div className="flex flex-col md:flex-row items-end justify-between gap-8 mt-12 md:mt-0">
+        {/* Role + status */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.65, duration: 0.5 }}
+          className="space-y-4"
+        >
+          <p className="text-d-muted text-[clamp(1rem,2vw,1.2rem)] font-light max-w-md leading-relaxed">
+            {profile.role}
+          </p>
+          <span className="inline-flex items-center gap-2 text-[12px] text-d-muted border border-[rgba(237,238,244,0.1)] rounded-full px-3 py-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse" />
             Disponível para projetos
           </span>
         </motion.div>
 
-        {/* Name & Role */}
-        <motion.h1
-          variants={item}
-          className="text-[clamp(2.25rem,5.5vw,3.75rem)] font-extrabold leading-[1.08] tracking-[-1.5px] mb-3"
-        >
-          Olá, eu sou<br />
-          <span className="text-accent">{profile.name}</span>
-        </motion.h1>
-
-        <motion.p
-          variants={item}
-          className="text-[clamp(1rem,2vw,1.25rem)] text-base-300 light:text-light-400 mb-4"
-        >
-          {profile.role}
-        </motion.p>
-
-        <motion.p
-          variants={item}
-          className="text-base-300 light:text-light-400 max-w-md mx-auto mb-8 leading-relaxed text-[0.95rem]"
-        >
-          Transformo ideias em produtos digitais robustos e escaláveis.
-        </motion.p>
-
         {/* CTAs */}
-        <motion.div variants={item} className="flex gap-3 justify-center flex-wrap">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.75, duration: 0.5 }}
+          className="flex gap-3 flex-wrap"
+        >
           <a
             href="#projetos"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg
-              bg-accent text-base-900 font-semibold text-[0.9375rem]
-              hover:bg-accent-hover hover:-translate-y-0.5
-              shadow-[0_0_24px_rgba(96,165,250,0.25)]
-              hover:shadow-[0_0_40px_rgba(96,165,250,0.35)]
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl
+              bg-lime text-[#07080f] font-bold text-[13px] tracking-wide
+              hover:bg-[#dffe3a] hover:-translate-y-0.5
               transition-all duration-200 no-underline min-h-[48px]"
           >
-            <ArrowDown size={18} aria-hidden="true" />
-            Ver Projetos
+            Ver projetos <ArrowRight size={15} />
           </a>
           <a
             href="#contato"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-[0.9375rem]
-              border border-base-500 text-base-50 hover:border-accent/50 hover:bg-accent-subtle
-              light:border-light-600 light:text-light-50 light:hover:border-accent/50 light:hover:bg-accent-subtle
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-[13px] tracking-wide
+              border border-[rgba(237,238,244,0.1)] text-d-text
+              hover:border-lime/40 hover:text-lime hover:-translate-y-0.5
               transition-all duration-200 no-underline min-h-[48px]"
           >
-            <Send size={18} aria-hidden="true" />
-            Contato
+            Contato <ArrowDownRight size={15} />
           </a>
         </motion.div>
+      </div>
+
+      {/* ── Decorative line ── */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ delay: 0.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-0 left-6 right-6 md:left-10 md:right-10 h-[1px]
+          bg-[rgba(237,238,244,0.07)] origin-left"
+      />
+
+      {/* ── Scroll hint ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1, duration: 0.5 }}
+        className="absolute bottom-6 right-6 md:right-10
+          flex items-center gap-2 text-d-faint text-[11px] font-mono tracking-[2px]"
+      >
+        SCROLL
+        <motion.span
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+        >
+          ↓
+        </motion.span>
       </motion.div>
     </section>
   )
